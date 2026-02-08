@@ -1,0 +1,24 @@
+
+int minimumFlips(int n) {
+    int flips = 0;
+
+    int len = 0;
+    int temp = n;
+    while (temp) {
+        temp >>= 1;   // find number of bits
+        len++;
+    }
+
+    int i = 0, j = len - 1;
+    while (i < j) {
+        int left = (n >> j) & 1;  // bit at position j
+        int right = (n >> i) & 1; // bit at position i
+
+        if (left != right) flips += 2; // each different pair counts as 2 flips
+        i++;
+        j--;
+    }
+
+    // If odd length, middle bit doesn’t need flipping
+    return flips;
+}
