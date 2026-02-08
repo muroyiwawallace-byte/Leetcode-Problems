@@ -1,0 +1,8 @@
+int smallestNumber(int n){
+int temp=n;
+int bits=0;
+while(temp>0){
+temp=temp>>1;
+bits++;
+}
+return((1<<bits)-1);
